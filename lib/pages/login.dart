@@ -7,7 +7,9 @@ class loginScreen extends StatelessWidget {
   final TextEditingController _emailControler = TextEditingController();
   final TextEditingController _pwControler = TextEditingController();
 
-  loginScreen({super.key});
+  final void Function()? onTapFun;
+
+  loginScreen({super.key, required this.onTapFun});
 
   // login method
 
@@ -72,9 +74,12 @@ class loginScreen extends StatelessWidget {
                     style:
                         TextStyle(color: Theme.of(context).colorScheme.primary),
                   ),
-                  Text(
-                    "Dang ki",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  GestureDetector(
+                    onTap: onTapFun,
+                    child: Text(
+                      "Dang ki",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   )
                 ],
               )

@@ -8,7 +8,9 @@ class registerScreeen extends StatelessWidget {
   final TextEditingController _pwControler = TextEditingController();
   final TextEditingController _conPwControler = TextEditingController();
 
-  registerScreeen({super.key});
+  final void Function()? onTapFun;
+
+  registerScreeen({super.key, required this.onTapFun});
 
   // login method
 
@@ -79,9 +81,12 @@ class registerScreeen extends StatelessWidget {
                     style:
                         TextStyle(color: Theme.of(context).colorScheme.primary),
                   ),
-                  Text(
-                    "Dang nhap",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  GestureDetector(
+                    onTap: onTapFun,
+                    child: Text(
+                      "Dang nhap",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   )
                 ],
               )

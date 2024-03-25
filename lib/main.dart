@@ -1,3 +1,4 @@
+import 'package:chat_app/auth/remote.dart';
 import 'package:flutter/material.dart';
 import 'pages/login.dart';
 import 'pages/regsiter.dart';
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget{
     // TODO: implement build
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: registerScreeen(),
+      home: loginOrRegister(),
       theme: lightMode,
     );
     throw UnimplementedError();
