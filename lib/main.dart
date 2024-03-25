@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'pages/login.dart';
+import 'pages/regsiter.dart';
 import 'theme/light_theme.dart';
 
 class MyApp extends StatelessWidget{
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget{
     // TODO: implement build
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: loginScreen(),
+      home: registerScreeen(),
       theme: lightMode,
     );
     throw UnimplementedError();

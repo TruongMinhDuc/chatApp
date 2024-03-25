@@ -1,21 +1,21 @@
-import 'package:chat_app/cmpts/button.dart';
-import 'package:chat_app/cmpts/textField.dart';
 import 'package:flutter/material.dart';
-import '';
 
-class loginScreen extends StatelessWidget {
+import '../cmpts/button.dart';
+import '../cmpts/textField.dart';
+
+class registerScreeen extends StatelessWidget {
   final TextEditingController _emailControler = TextEditingController();
   final TextEditingController _pwControler = TextEditingController();
+  final TextEditingController _conPwControler = TextEditingController();
 
-  loginScreen({super.key});
+  registerScreeen({super.key});
 
   // login method
 
-  void logIn() {}
+  void register() {}
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
         body: Center(
@@ -33,7 +33,7 @@ class loginScreen extends StatelessWidget {
 
               //note
               Text(
-                "Dang nhap vao tai khoan",
+                "Tao tai khoan moi",
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.primary,
                   fontSize: 16,
@@ -50,17 +50,24 @@ class loginScreen extends StatelessWidget {
               ),
 
               const SizedBox(height: 10),
-
+              // mat khau
               myTextField(
                 hintText: "Mat khau",
                 obscureText: true,
                 controller: _pwControler,
               ),
+              const SizedBox(height: 10),
+              //Nhap lai mat khau
+              myTextField(
+                hintText: "Nhap lai mat khau",
+                obscureText: true,
+                controller: _conPwControler,
+              ),
               const SizedBox(height: 25),
               //button
               myButton(
-                buttonText: 'Dang nhap',
-                fncOnTap: logIn,
+                buttonText: 'Register',
+                fncOnTap: register,
               ),
               const SizedBox(height: 25),
               //register
@@ -68,12 +75,12 @@ class loginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Chua co tai khoan? ",
+                    "Da co tai khoan? ",
                     style:
                         TextStyle(color: Theme.of(context).colorScheme.primary),
                   ),
                   Text(
-                    "Dang ki",
+                    "Dang nhap",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   )
                 ],
@@ -81,6 +88,5 @@ class loginScreen extends StatelessWidget {
             ],
           ),
         ));
-    throw UnimplementedError();
   }
 }
