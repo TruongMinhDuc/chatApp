@@ -1,8 +1,9 @@
-import 'package:chat_app/auth/auth_Service.dart';
+
 import 'package:flutter/material.dart';
 
 import '../cmpts/button.dart';
 import '../cmpts/textField.dart';
+import '../services/auth/auth_Service.dart';
 
 class registerScreeen extends StatelessWidget {
   final TextEditingController _emailControler = TextEditingController();

@@ -1,8 +1,10 @@
-import 'package:chat_app/auth/remote.dart';
+
+import 'package:chat_app/services/auth/remote.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../pages/homePage.dart';
+import '../../pages/homePage.dart';
+
 
 class authGate extends StatelessWidget {
   const authGate({super.key});
