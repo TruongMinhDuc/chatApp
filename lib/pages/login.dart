@@ -1,3 +1,4 @@
+import 'package:chat_app/auth/auth_Service.dart';
 import 'package:chat_app/cmpts/button.dart';
 import 'package:chat_app/cmpts/textField.dart';
 import 'package:flutter/material.dart';
@@ -13,13 +14,32 @@ class loginScreen extends StatelessWidget {
 
   // login method
 
-  void logIn() {}
+  void logIn(BuildContext context) async {
+    //authService
+    final auth_Service = authService();
+
+
+    //login
+    try {
+      await auth_Service.signInWithEmailAndPassword(
+          _emailControler.text, _pwControler.text);
+    }
+    catch (e) {
+      showDialog(context: context, builder: (context) =>
+          AlertDialog(
+            title: Text(e.toString()),
+          ));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme
+            .of(context)
+            .colorScheme
+            .background,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -28,7 +48,10 @@ class loginScreen extends StatelessWidget {
               Icon(
                 Icons.message,
                 size: 60,
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme
+                    .of(context)
+                    .colorScheme
+                    .primary,
               ),
 
               const SizedBox(height: 50),
@@ -37,7 +60,10 @@ class loginScreen extends StatelessWidget {
               Text(
                 "Dang nhap vao tai khoan",
                 style: TextStyle(
-                  color: Theme.of(context).colorScheme.primary,
+                  color: Theme
+                      .of(context)
+                      .colorScheme
+                      .primary,
                   fontSize: 16,
                 ),
               ),
@@ -62,7 +88,7 @@ class loginScreen extends StatelessWidget {
               //button
               myButton(
                 buttonText: 'Dang nhap',
-                fncOnTap: logIn,
+                fncOnTap: () => logIn(context),
               ),
               const SizedBox(height: 25),
               //register
@@ -72,7 +98,10 @@ class loginScreen extends StatelessWidget {
                   Text(
                     "Chua co tai khoan? ",
                     style:
-                        TextStyle(color: Theme.of(context).colorScheme.primary),
+                    TextStyle(color: Theme
+                        .of(context)
+                        .colorScheme
+                        .primary),
                   ),
                   GestureDetector(
                     onTap: onTapFun,

@@ -1,3 +1,4 @@
+import 'package:chat_app/auth/auth_Service.dart';
 import 'package:flutter/material.dart';
 
 import '../cmpts/button.dart';
@@ -14,7 +15,29 @@ class registerScreeen extends StatelessWidget {
 
   // login method
 
-  void register() {}
+  void register(BuildContext context) {
+    final _auth = authService();
+
+    if (_pwControler.text == _conPwControler.text) {
+      try {
+        _auth.signUpWithEmailAndPassword(
+            _emailControler.text, _pwControler.text);
+      } catch (e) {
+        showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+                  title: Text(e.toString()),
+                ));
+      }
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) => const AlertDialog(
+          title: Text("Mat khau nhap lai khong trung khop"),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +92,7 @@ class registerScreeen extends StatelessWidget {
               //button
               myButton(
                 buttonText: 'Register',
-                fncOnTap: register,
+                fncOnTap: () => register(context),
               ),
               const SizedBox(height: 25),
               //register

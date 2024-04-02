@@ -1,4 +1,7 @@
+import 'package:chat_app/auth/auth_Gate.dart';
 import 'package:chat_app/auth/remote.dart';
+import 'package:chat_app/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'pages/login.dart';
 import 'pages/regsiter.dart';
@@ -12,7 +15,7 @@ class MyApp extends StatelessWidget{
     // TODO: implement build
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: loginOrRegister(),
+      home: const authGate(),
       theme: lightMode,
     );
     throw UnimplementedError();
@@ -21,6 +24,8 @@ class MyApp extends StatelessWidget{
 }
 
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
