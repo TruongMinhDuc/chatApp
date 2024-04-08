@@ -11,11 +11,15 @@ class homePage extends StatelessWidget {
   final chatService _chatService = chatService();
   final authService _authService = authService();
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home"),
+        title: Text("Trang chu"),
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.grey,
+        elevation: 0,
       ),
       drawer: const myDrawer(),
       body: _buildUserList(),
@@ -45,18 +49,24 @@ class homePage extends StatelessWidget {
   }
 
   Widget _buildUserItem(Map<String, dynamic> userData, BuildContext context) {
-    return userTile(
-      text: userData["email"],
-      onTap: () {
-        Navigator.push(
-          (context),
-          MaterialPageRoute(
-            builder: (context) => chatPage(
-              recevierEmail: userData["email"],
+    if(userData["email"] != _authService.getCurrentUser()!.email) {
+      return userTile(
+        text: userData["email"],
+        onTap: () {
+          Navigator.push(
+            (context),
+            MaterialPageRoute(
+              builder: (context) => chatPage(
+                recevierEmail: userData["email"],
+                recevierId: userData["uid"],
+              ),
             ),
-          ),
-        );
-      },
-    );
+          );
+        },
+      );
+    }
+    else {
+      return Container();
+    }
   }
 }
